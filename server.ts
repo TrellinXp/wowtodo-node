@@ -17,9 +17,10 @@ function intializeApp(app) {
     let router: RouterManager = new RouterManager();
     var con = database.createConnection();
     // parse various different custom JSON types as JSON
-    //app.use(bodyParser.json({ type: 'application/*+json' }))
+    
     router.createWeeklyRouter(con, app);
     router.createRaidRouter(con, app);
+    router.createResetRouter(con, app);
     app.get('/', (req, res) => {
         res.send('Welcome to my Nodemon API!');
     });
