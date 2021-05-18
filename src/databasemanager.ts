@@ -9,7 +9,7 @@ export class DatabaseManager {
             port: '3307'
         });
     
-        con.connect(function (err: any) {
+        con.connect(function (err) {
             if (err) throw err;
             console.log("Connected!");
         });

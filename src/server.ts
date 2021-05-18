@@ -16,7 +16,7 @@ function intializeApp(app: Express) {
 
     let database: DatabaseManager = new DatabaseManager();
     let router: RouterManager = new RouterManager();
-    const con = database.createConnection();
+    var con = database.createConnection();
     // parse various different custom JSON types as JSON
     
     router.createWeeklyRouter(con, app);

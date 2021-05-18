@@ -2,14 +2,14 @@ import express = require('express');
 
 export class RouterManager {
 
-    createWeeklyRouter(con: any, app: any) {
+    createWeeklyRouter(con, app) {
 
         app.route('/api/weekly')
-        .get((req: any, res: any) => {
-            con.query('SELECT * FROM Mplus', function (err: any, results: any, fields: any) {
+        .get((req, res) => {
+            con.query('SELECT * FROM Mplus', function (err, results, fields) {
                 if (err) throw err;
 
-                var resultArray : object[] = [];
+                var resultArray = [];
                 results.forEach(element => {
                     const key = {
                         Id: element.Id,
@@ -22,7 +22,7 @@ export class RouterManager {
                 res.json(results);
             })
         })
-        .post((req: any, res: any) => {
+        .post((req, res) => {
             if (req.body !== undefined) {
                 var data = req.body;
                 if (!req.body) {
@@ -33,7 +33,7 @@ export class RouterManager {
                 con.query(
                     "UPDATE Mplus SET counter = ?, completed = ? WHERE id = ?",
                     [data.Counter, data.Completed, data.Id],
-                    (err: any, res: any) => {
+                    (err, res) => {
                         if (err) {
                             console.log("error: ", err);
                             return;
@@ -55,8 +55,8 @@ export class RouterManager {
         })
     }
 
-    createResetRouter(con: any, app: any) {
-        app.post('/api/reset', function (req: any, res: any) {
+    createResetRouter(con, app) {
+        app.post('/api/reset', function (req, res) {
             con.query(
                 "UPDATE Mplus SET completed = ?",
                 [0],
