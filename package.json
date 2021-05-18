@@ -19,7 +19,7 @@
     "ts-node": "^9.1.1"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.15.4"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
